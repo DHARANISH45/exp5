@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Juice Shop Bill Calculator</title>
+    <style>
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+            margin: 20px;
+            
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select {
+            margin-bottom: 10px;
+        }
+        #juice1{
+            position: absolute;
+                   left: 37%;
+                   top: 25%;
+                   border: 2px solid black;
+                   height: 440px;
+                   width: 300px;
+                   padding-left: 70px;
+                   border-radius: 20px;
+                   font-weight: 600;
+                   background-color: white;
+        }
+        #pic{
+            position: absolute;
+            top: 0;   
+        }
+    </style>
+</head>
+<body >
+    <img src="6.jpg" id="pic" alt="pic" height="700" width="1500">
+    <div id="juice1">
+    <h1><u>Juice Shop Bill Calculator</u></h1>
+    <label for="juice">Select Juice:</label>
+    <select id="juice">
+        <option value="orange">Orange Juice - 20</option>
+        <option value="apple">Apple Juice - 25</option>
+        <option value="carrot">Carrot Juice - 40</option>
+        <option value="pineapple">Pineapple Juice - 45</option>
+    </select>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" value="0" min="1"><br><br>
+    <button onclick="calculateBill()">Calculate Total</button>
+    <br><br>
+    <div id="total"></div>
+</div>
+    <script>
+        function calculateBill() {
+            const juice = document.getElementById('juice').value;
+            const quantity = parseInt(document.getElementById('quantity').value);
+            let price;
+            switch (juice) {
+                case 'orange':
+                    price = 20;
+                    break;
+                case 'apple':
+                    price = 25;
+                    break;
+                case 'carrot':
+                    price = 40;
+                    break;
+                case 'pineapple':
+                    price = 45;
+                    break;
+                default:
+                    price = 0;
+            }
+            const total = price * quantity;
+            document.getElementById('total').innerText = `Total Bill: ${total.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
